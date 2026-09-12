@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from "react";
 import { Calendar as CalendarIcon, CheckCircle2, AlertCircle, XCircle } from "lucide-react";
 

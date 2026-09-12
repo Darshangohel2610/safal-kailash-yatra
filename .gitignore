@@ -1,16 +1,24 @@
+# Next.js build output
+.next/
+out/
+build/
+
+# Dependencies
+node_modules/
+
 # Logs
 logs
 *.log
 npm-debug.log*
 yarn-debug.log*
-yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
-*.local
+# Environment variables
+.env
+.env*.local
+.env.production
+!.env.example
 
 # Editor directories and files
 .vscode/*
@@ -23,8 +31,6 @@ dist-ssr
 *.sln
 *.sw?
 
-# Environment variables
-.env
-.env.*
-!.env.example
-
+# Vercel / Next.js telemetry
+.vercel
+.neon

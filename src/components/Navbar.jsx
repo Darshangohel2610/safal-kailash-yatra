@@ -1,5 +1,7 @@
+"use client";
+
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { Menu, X, Phone, ChevronRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { packageData } from "../data/packageData";
@@ -34,12 +36,12 @@ export default function Navbar() {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link
-            to="/"
+            href="/"
             className="flex items-center group focus:outline-none focus:ring-2 focus:ring-primary rounded-2xl"
           >
             <div className="bg-white p-1.5 px-2.5 rounded-2xl transition-transform duration-300 group-hover:scale-105">
               <img
-                src={logoImg}
+                src={logoImg.src || logoImg}
                 alt="Safal Kailash Yatra"
                 className="h-14 sm:h-16 lg:h-18 w-auto object-contain"
               />
@@ -59,7 +61,7 @@ export default function Navbar() {
                   {link.label}
                 </a>
               ) : (
-                <Link key={link.label} to={link.href} className={className}>
+                <Link key={link.label} href={link.href} className={className}>
                   {link.label}
                 </Link>
               );
@@ -144,7 +146,7 @@ export default function Navbar() {
                 ) : (
                   <Link
                     key={link.label}
-                    to={link.href}
+                    href={link.href}
                     onClick={() => setMobileMenuOpen(false)}
                     className={className}
                   >

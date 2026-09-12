@@ -18,7 +18,7 @@ export default function Footer() {
             <a href="#home" className="inline-block group">
               <div className="bg-white p-2 px-3 rounded-2xl shadow-md border border-gray-100 transition-transform duration-300 group-hover:scale-105 inline-block">
                 <img
-                  src={logoImg}
+                  src={logoImg.src || logoImg}
                   alt="Safal Kailash Yatra"
                   className="h-14 sm:h-16 w-auto object-contain"
                 />

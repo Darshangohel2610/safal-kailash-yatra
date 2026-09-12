@@ -1,10 +1,12 @@
-import React, { useState, useMemo } from "react";
-import { packages } from "../data/packages";
-import PackageCard from "../components/packages/PackageCard";
-import { Search, Compass, ShieldCheck, PhoneCall, Sparkles } from "lucide-react";
-import { packageData } from "../data/packageData";
+"use client";
 
-export default function Packages() {
+import React, { useState, useMemo } from "react";
+import { packages } from "@/data/packages";
+import PackageCard from "@/components/packages/PackageCard";
+import { Search, Compass, ShieldCheck, PhoneCall } from "lucide-react";
+import { packageData } from "@/data/packageData";
+
+export default function PackagesPage() {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
 

@@ -1,28 +1,27 @@
+"use client";
+
 import React, { useState } from "react";
-import { useParams, Link } from "react-router-dom";
-import { packages } from "../data/packages";
-import PackageGallery from "../components/packages/PackageGallery";
-import PackageHeader from "../components/packages/PackageHeader";
-import AboutTrek from "../components/packages/AboutTrek";
-import TrekInformation from "../components/packages/TrekInformation";
-import JoinFromUs from "../components/packages/JoinFromUs";
-import TravelOptions from "../components/packages/TravelOptions";
-import StayOptions from "../components/packages/StayOptions";
-import DepartureDates from "../components/packages/DepartureDates";
-import Itinerary from "../components/packages/Itinerary";
-import PlacesToVisit from "../components/packages/PlacesToVisit";
-import InclusionsExclusions from "../components/packages/InclusionsExclusions";
-import Policies from "../components/packages/Policies";
-import PackageSummary from "../components/packages/PackageSummary";
-import SimilarPackages from "../components/packages/SimilarPackages";
-import MobileStickyCTA from "../components/packages/MobileStickyCTA";
-import FinalCTA from "../components/FinalCTA";
+import Link from "next/link";
+import PackageGallery from "@/components/packages/PackageGallery";
+import PackageHeader from "@/components/packages/PackageHeader";
+import AboutTrek from "@/components/packages/AboutTrek";
+import TrekInformation from "@/components/packages/TrekInformation";
+import JoinFromUs from "@/components/packages/JoinFromUs";
+import TravelOptions from "@/components/packages/TravelOptions";
+import StayOptions from "@/components/packages/StayOptions";
+import DepartureDates from "@/components/packages/DepartureDates";
+import Itinerary from "@/components/packages/Itinerary";
+import PlacesToVisit from "@/components/packages/PlacesToVisit";
+import InclusionsExclusions from "@/components/packages/InclusionsExclusions";
+import Policies from "@/components/packages/Policies";
+import PackageSummary from "@/components/packages/PackageSummary";
+import SimilarPackages from "@/components/packages/SimilarPackages";
+import MobileStickyCTA from "@/components/packages/MobileStickyCTA";
+import FinalCTA from "@/components/FinalCTA";
 import { Compass } from "lucide-react";
 
-export default function PackageDetails() {
-  const { slug } = useParams();
+export default function PackageDetailsClient({ pkg, slug }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const pkg = packages.find((p) => p.slug === slug);
 
   if (!pkg) {
     return (
@@ -33,7 +32,7 @@ export default function PackageDetails() {
           The requested yatra package slug "{slug}" does not exist or has been updated.
         </p>
         <Link
-          to="/packages"
+          href="/packages"
           className="px-6 py-3 bg-accent text-white font-bold rounded-xl shadow-md hover:bg-accent-light transition-all"
         >
           View All Packages

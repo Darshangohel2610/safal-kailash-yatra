@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { ArrowRight, Compass } from "lucide-react";
 import { packages } from "../data/packages";
 import PackageCard from "../components/packages/PackageCard";
@@ -25,7 +25,7 @@ export default function HomePackagesSection() {
           </div>
 
           <Link
-            to="/packages"
+            href="/packages"
             className="inline-flex items-center gap-2 px-6 py-3 bg-primary hover:bg-primary-dark text-white font-bold text-sm rounded-2xl shadow-md transition-all self-start md:self-auto flex-shrink-0"
           >
             <span>View All Packages</span>

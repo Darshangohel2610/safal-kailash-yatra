@@ -1,6 +1,4 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { packageData } from "../data/packageData";
+import Link from "next/link";
 
 export default function NotFound() {
   return (
@@ -11,7 +9,7 @@ export default function NotFound() {
         The requested Yatra package or route could not be found. Explore our complete list of Adi Kailash packages.
       </p>
       <Link
-        to="/packages"
+        href="/packages"
         className="px-6 py-3 bg-accent text-white font-bold rounded-xl shadow-md hover:bg-accent-light transition-all"
       >
         View All Yatra Packages

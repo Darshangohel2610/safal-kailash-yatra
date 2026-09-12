@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { Clock, MapPin, CheckCircle2, ArrowRight } from "lucide-react";
 
 export default function PackageCard({ pkg }) {
@@ -65,7 +65,7 @@ export default function PackageCard({ pkg }) {
           </div>
 
           <Link
-            to={`/packages/${pkg.slug}`}
+            href={`/packages/${pkg.slug}`}
             className="inline-flex items-center gap-2 px-4 py-2.5 bg-accent hover:bg-accent-light text-white text-xs font-bold rounded-xl shadow-md transition-all group-hover:shadow-lg"
           >
             <span>View Details</span>

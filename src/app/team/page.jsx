@@ -1,9 +1,10 @@
-import React, { useState } from "react";
-import { teamData } from "../data/teamData";
-import { Users, Award, ShieldCheck, HeartHandshake, Sparkles } from "lucide-react";
-import FinalCTA from "../components/FinalCTA";
+"use client";
 
-export default function Team() {
+import React, { useState } from "react";
+import { teamData } from "@/data/teamData";
+import FinalCTA from "@/components/FinalCTA";
+
+export default function TeamPage() {
   const [activeCategory, setActiveCategory] = useState("All");
   const [isModalOpen, setIsModalOpen] = useState(false);
 

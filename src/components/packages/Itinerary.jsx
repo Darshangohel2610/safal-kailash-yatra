@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from "react";
 import { ChevronDown, FileText, CheckCircle, MapPin, Download } from "lucide-react";
 

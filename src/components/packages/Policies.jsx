@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from "react";
 import { ChevronDown, ShieldCheck, Backpack, FileText } from "lucide-react";
 

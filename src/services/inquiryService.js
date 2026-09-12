@@ -1,4 +1,8 @@
-const INQUIRY_API_URL = import.meta.env.VITE_INQUIRY_API_URL;
+const INQUIRY_API_URL =
+  process.env.NEXT_PUBLIC_INQUIRY_API_URL ||
+  (typeof import.meta !== "undefined" && import.meta.env
+    ? import.meta.env.VITE_INQUIRY_API_URL
+    : "");
 
 export const submitInquiry = async ({
   name,
