@@ -1,0 +1,103 @@
+@import "tailwindcss";
+
+/* ──────────────────────────────────────────────────────────────
+   CENTRALIZED THEME — Change colors here, entire site updates.
+   Tailwind v4 @theme registers these as first-class utilities:
+     bg-primary, text-accent, border-border, etc.
+   ────────────────────────────────────────────────────────────── */
+@theme {
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+
+  /* Core brand purple */
+  --color-primary: #32108F;
+  --color-primary-dark: #24105F;
+  --color-primary-light: #4B20B8;
+
+  /* Accent saffron / orange */
+  --color-accent: #F56600;
+  --color-accent-light: #FF8A2A;
+
+  /* Neutrals & surfaces */
+  --color-background: #FAF9F6;
+  --color-surface: #FFFFFF;
+  --color-purple-surface: #F3F0FA;
+
+  /* Typography */
+  --color-heading: #17151C;
+  --color-body: #6F6A78;
+
+  /* Borders */
+  --color-border: #E8E4ED;
+
+  /* Footer / dark sections */
+  --color-footer: #17102F;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-primary) var(--color-background);
+  }
+  body {
+    font-family: var(--font-sans);
+    background-color: var(--color-background);
+    color: var(--color-heading);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+}
+
+/* Custom Thin Themed Scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-background);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary-dark);
+}
+
+/* Swiper Custom Styles */
+.hero-swiper .swiper-pagination-bullet {
+  background: rgba(255, 255, 255, 0.5);
+  width: 10px;
+  height: 10px;
+  opacity: 1;
+  transition: all 0.3s ease;
+}
+
+.hero-swiper .swiper-pagination-bullet-active {
+  background: var(--color-accent);
+  width: 28px;
+  border-radius: 6px;
+}
+
+/* Glassmorphism utility */
+.glass-nav {
+  background: rgba(255, 255, 255, 0.90);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.glass-nav-transparent {
+  background: linear-gradient(180deg, rgba(23, 16, 47, 0.8) 0%, rgba(23, 16, 47, 0) 100%);
+}
+
+/* Accessibility: Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
