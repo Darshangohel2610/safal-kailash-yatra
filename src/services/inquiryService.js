@@ -1,4 +1,4 @@
-const INQUIRY_API_URL = "https://script.google.com/macros/s/AKfycbzhGHIwDQqonlqaN-YGf_ghSe4BcI_ZOKJEvftUurcF-U_Cs5BOA5iH9sqCEM1uiWCKCw/exec"; // Replace with your Google Apps Script Web App URL
+const INQUIRY_API_URL = import.meta.env.VITE_INQUIRY_API_URL;
 
 export const submitInquiry = async ({
   name,
