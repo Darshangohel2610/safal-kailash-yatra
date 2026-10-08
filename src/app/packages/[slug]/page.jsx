@@ -1,15 +1,16 @@
-import { packages } from "@/data/packages";
+import { getPackages, getPackageBySlug } from "@/lib/queries/packages";
 import PackageDetailsClient from "./PackageDetailsClient";
 
 export async function generateStaticParams() {
-  return packages.map((pkg) => ({
+  const pkgs = await getPackages();
+  return pkgs.map((pkg) => ({
     slug: pkg.slug,
   }));
 }
 
 export async function generateMetadata({ params }) {
   const resolvedParams = await params;
-  const pkg = packages.find((p) => p.slug === resolvedParams.slug);
+  const pkg = await getPackageBySlug(resolvedParams.slug);
 
   if (!pkg) {
     return {
@@ -19,13 +20,14 @@ export async function generateMetadata({ params }) {
 
   return {
     title: `${pkg.title} | Safal Kailash Yatra`,
-    description: pkg.shortDescription || pkg.about?.overview,
+    description: pkg.shortDescription || pkg.about,
   };
 }
 
 export default async function PackageDetailsPage({ params }) {
   const resolvedParams = await params;
-  const pkg = packages.find((p) => p.slug === resolvedParams.slug);
+  const pkg = await getPackageBySlug(resolvedParams.slug);
+  const allPackages = await getPackages({ includeAll: false });
 
-  return <PackageDetailsClient pkg={pkg} slug={resolvedParams.slug} />;
+  return <PackageDetailsClient pkg={pkg} slug={resolvedParams.slug} allPackages={allPackages} />;
 }

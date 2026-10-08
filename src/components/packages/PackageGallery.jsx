@@ -21,7 +21,7 @@ export default function PackageGallery({ images = [], title = "Package Gallery" 
   };
 
   return (
-    <div className="space-y-3">
+    <div className="space-y-4">
       {/* Main Image Container */}
       <div className="relative h-72 sm:h-96 md:h-[420px] w-full rounded-3xl overflow-hidden bg-gray-900 border border-border group shadow-lg">
         <img
@@ -67,14 +67,14 @@ export default function PackageGallery({ images = [], title = "Package Gallery" 
 
       {/* Thumbnails Row */}
       {images.length > 1 && (
-        <div className="flex items-center gap-3 overflow-x-auto pb-2 scrollbar-none">
+        <div className="flex items-center gap-3 sm:gap-4 overflow-x-auto py-2.5 px-1.5 scrollbar-none">
           {images.map((img, index) => (
             <button
               key={index}
               onClick={() => setActiveIndex(index)}
-              className={`relative h-16 sm:h-20 w-24 sm:w-28 rounded-xl overflow-hidden flex-shrink-0 border-2 transition-all ${
+              className={`relative h-16 sm:h-20 w-24 sm:w-28 rounded-2xl overflow-hidden flex-shrink-0 border-2 transition-all duration-300 ${
                 activeIndex === index
-                  ? "border-accent ring-2 ring-accent/30 opacity-100 scale-105"
+                  ? "border-accent ring-4 ring-accent/30 shadow-md opacity-100"
                   : "border-transparent opacity-60 hover:opacity-100"
               }`}
             >
@@ -100,35 +100,30 @@ export default function PackageGallery({ images = [], title = "Package Gallery" 
               <X className="w-6 h-6" />
             </button>
 
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.9 }}
-              className="relative max-w-5xl max-h-[85vh] w-full h-full flex items-center justify-center"
-            >
+            <div className="relative max-w-5xl max-h-[85vh] w-full flex items-center justify-center">
               <img
                 src={images[activeIndex]}
-                alt={`${title} fullscreen`}
-                className="max-w-full max-h-full object-contain rounded-2xl shadow-2xl"
+                alt={`${title} - image ${activeIndex + 1}`}
+                className="max-w-full max-h-[85vh] object-contain rounded-2xl shadow-2xl"
               />
 
               {images.length > 1 && (
                 <>
                   <button
                     onClick={handlePrev}
-                    className="absolute left-2 sm:left-4 p-3 rounded-full bg-white/10 text-white hover:bg-white/30 backdrop-blur-md transition-all"
+                    className="absolute left-4 p-3 rounded-full bg-white/10 text-white hover:bg-white/30 backdrop-blur-md transition-all"
                   >
                     <ChevronLeft className="w-6 h-6" />
                   </button>
                   <button
                     onClick={handleNext}
-                    className="absolute right-2 sm:right-4 p-3 rounded-full bg-white/10 text-white hover:bg-white/30 backdrop-blur-md transition-all"
+                    className="absolute right-4 p-3 rounded-full bg-white/10 text-white hover:bg-white/30 backdrop-blur-md transition-all"
                   >
                     <ChevronRight className="w-6 h-6" />
                   </button>
                 </>
               )}
-            </motion.div>
+            </div>
           </div>
         )}
       </AnimatePresence>

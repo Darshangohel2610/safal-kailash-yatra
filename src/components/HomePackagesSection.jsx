@@ -1,11 +1,12 @@
 import React from "react";
 import Link from "next/link";
 import { ArrowRight, Compass } from "lucide-react";
-import { packages } from "../data/packages";
 import PackageCard from "../components/packages/PackageCard";
+import { getPackages } from "@/lib/queries/packages";
 
-export default function HomePackagesSection() {
-  const featuredPackages = packages.slice(0, 3);
+export default async function HomePackagesSection() {
+  const packagesList = await getPackages({ includeAll: false });
+  const featuredPackages = packagesList.slice(0, 3);
 
   return (
     <section id="itinerary" className="py-20 bg-background border-t border-border">
@@ -34,11 +35,18 @@ export default function HomePackagesSection() {
         </div>
 
         {/* Packages Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {featuredPackages.map((pkg) => (
-            <PackageCard key={pkg.id} pkg={pkg} />
-          ))}
-        </div>
+        {featuredPackages.length === 0 ? (
+          <div className="py-12 text-center text-gray-500 bg-white rounded-3xl border border-border">
+            <Compass className="w-10 h-10 text-gray-300 mx-auto mb-2" />
+            <p className="text-sm font-bold text-heading">No packages available right now.</p>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {featuredPackages.map((pkg) => (
+              <PackageCard key={pkg.id} pkg={pkg} />
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );

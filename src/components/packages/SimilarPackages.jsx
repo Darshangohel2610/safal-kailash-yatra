@@ -1,8 +1,9 @@
+"use client";
+
 import React from "react";
 import PackageCard from "./PackageCard";
-import { packages } from "../../data/packages";
 
-export default function SimilarPackages({ currentSlug = "" }) {
+export default function SimilarPackages({ currentSlug = "", packages = [] }) {
   const similar = packages.filter((p) => p.slug !== currentSlug).slice(0, 3);
 
   if (!similar.length) return null;

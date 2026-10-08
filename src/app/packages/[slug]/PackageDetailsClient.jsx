@@ -20,7 +20,7 @@ import MobileStickyCTA from "@/components/packages/MobileStickyCTA";
 import FinalCTA from "@/components/FinalCTA";
 import { Compass } from "lucide-react";
 
-export default function PackageDetailsClient({ pkg, slug }) {
+export default function PackageDetailsClient({ pkg, slug, allPackages = [] }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   if (!pkg) {
@@ -69,6 +69,8 @@ export default function PackageDetailsClient({ pkg, slug }) {
           {/* Sticky Sidebar Area (~30%) */}
           <div className="lg:col-span-4 space-y-6 lg:sticky lg:top-28">
             <PackageSummary
+              startingPrice={pkg.startingPrice}
+              pkg={pkg}
               summary={pkg.summary}
               startingPoint={pkg.startingPoint}
               onBookNow={() => setIsModalOpen(true)}
@@ -77,7 +79,7 @@ export default function PackageDetailsClient({ pkg, slug }) {
         </div>
 
         {/* Similar Packages Section */}
-        <SimilarPackages currentSlug={pkg.slug} />
+        <SimilarPackages currentSlug={pkg.slug} packages={allPackages} />
       </div>
 
       {/* Mobile Bottom Sticky Bar */}

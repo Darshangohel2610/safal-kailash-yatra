@@ -2,8 +2,8 @@ import React from "react";
 import { CheckCircle2, ShieldCheck, Calendar, PhoneCall, Send, MapPin, Truck, Home } from "lucide-react";
 import { packageData } from "../../data/packageData";
 
-export default function PackageSummary({ summary = {}, startingPoint = "", onBookNow }) {
-  const price = summary.pricePerPerson || 32500;
+export default function PackageSummary({ summary = {}, startingPoint = "", startingPrice, pkg = {}, onBookNow }) {
+  const price = startingPrice || pkg?.startingPrice || summary?.pricePerPerson || 32500;
 
   return (
     <div className="bg-white rounded-3xl p-6 border border-border shadow-xl space-y-5">

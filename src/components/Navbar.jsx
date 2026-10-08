@@ -2,14 +2,20 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Menu, X, Phone, ChevronRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { packageData } from "../data/packageData";
 import logoImg from "../assets/logo.png";
 
 export default function Navbar() {
+  const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  if (pathname?.startsWith("/sanchalak")) {
+    return null;
+  }
 
   useEffect(() => {
     const handleScroll = () => {

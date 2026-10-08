@@ -46,7 +46,7 @@ export default function Policies({ policies = {} }) {
         )}
 
         {/* Cancellation Policy */}
-        {policies.cancellation && (
+        {(policies.cancellation?.length > 0 || typeof policies.cancellation === "string") && (
           <div className="rounded-2xl border border-border overflow-hidden">
             <button
               onClick={() => toggleSection("cancellation")}
@@ -60,14 +60,25 @@ export default function Policies({ policies = {} }) {
             </button>
             {openSection === "cancellation" && (
               <div className="p-4 border-t border-border bg-white text-xs text-body leading-relaxed">
-                {policies.cancellation}
+                {Array.isArray(policies.cancellation) ? (
+                  <ul className="space-y-2">
+                    {policies.cancellation.map((item, idx) => (
+                      <li key={idx} className="flex items-start gap-2">
+                        <span className="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0 mt-1.5" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  policies.cancellation
+                )}
               </div>
             )}
           </div>
         )}
 
         {/* Terms & Conditions */}
-        {policies.termsAndConditions && (
+        {(policies.terms?.length > 0 || policies.termsAndConditions?.length > 0 || typeof policies.terms === "string" || typeof policies.termsAndConditions === "string") && (
           <div className="rounded-2xl border border-border overflow-hidden">
             <button
               onClick={() => toggleSection("terms")}
@@ -81,7 +92,22 @@ export default function Policies({ policies = {} }) {
             </button>
             {openSection === "terms" && (
               <div className="p-4 border-t border-border bg-white text-xs text-body leading-relaxed">
-                {policies.termsAndConditions}
+                {(() => {
+                  const termsData = policies.terms || policies.termsAndConditions;
+                  if (Array.isArray(termsData)) {
+                    return (
+                      <ul className="space-y-2">
+                        {termsData.map((item, idx) => (
+                          <li key={idx} className="flex items-start gap-2">
+                            <span className="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0 mt-1.5" />
+                            <span>{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    );
+                  }
+                  return termsData;
+                })()}
               </div>
             )}
           </div>
