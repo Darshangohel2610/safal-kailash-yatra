@@ -15,7 +15,9 @@ export const metadata = {
   description:
     "Safal Kailash Yatra offers a thoughtfully planned Himalayan pilgrimage covering Adi Kailash, Parvati Kund, Om Parvat Darshan, and Kumaon valleys.",
   icons: {
-    icon: "/favicon.svg",
+    icon: [{ url: "/logo.png" }],
+    shortcut: "/logo.png",
+    apple: "/logo.png",
   },
 };
 

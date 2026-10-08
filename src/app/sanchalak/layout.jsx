@@ -4,7 +4,8 @@ import LogoutButton from "./components/LogoutButton";
 
 export const metadata = {
   title: "Sanchalak Admin Portal | Safal Kailash Yatra",
-  description: "Package and operational management portal for Safal Kailash Yatra.",
+  description:
+    "Package and operational management portal for Safal Kailash Yatra.",
 };
 
 export default function SanchalakLayout({ children }) {
@@ -15,8 +16,12 @@ export default function SanchalakLayout({ children }) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div>
-              <h1 className="text-sm font-bold tracking-tight text-white">Sanchalak Admin Portal</h1>
-              <p className="text-[10px] text-gray-400">Package & Operations Management</p>
+              <h1 className="text-sm font-bold tracking-tight text-white">
+                Sanchalak Admin Portal
+              </h1>
+              <p className="text-[10px] text-gray-400">
+                Package & Operations Management
+              </p>
             </div>
           </div>
 
@@ -52,7 +57,9 @@ export default function SanchalakLayout({ children }) {
       </header>
 
       {/* Main Admin Body */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">{children}</main>
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {children}
+      </main>
     </div>
   );
 }
