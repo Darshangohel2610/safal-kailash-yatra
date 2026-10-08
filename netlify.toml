@@ -1,0 +1,7 @@
+[build.environment]
+  # Server-only build artifacts (Next.js cache/server bundles and the Netlify
+  # functions, edge functions and blobs generated from them) can legitimately
+  # contain values read from process.env at build time. They are never served
+  # to browsers, so they are excluded from secrets scanning. Public output
+  # (.next/static, .netlify/static, public/) is still scanned.
+  SECRETS_SCAN_OMIT_PATHS = ".next/cache/**,.next/server/**,.netlify/.next/**,.netlify/functions-internal/**,.netlify/edge-functions/**,.netlify/blobs/**"

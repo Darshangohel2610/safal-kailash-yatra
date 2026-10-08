@@ -1,9 +1,9 @@
 import { NextResponse } from "next/server";
 import { jwtVerify } from "jose";
 
-const secret = new TextEncoder().encode(
-  process.env.ADMIN_JWT_SECRET || "safal-kailash-yatra-admin-secret-key-2026"
-);
+// ADMIN_JWT_SECRET must be set as a Netlify environment variable. An empty key
+// makes jose reject every sign/verify call, so a missing secret fails closed.
+const secret = new TextEncoder().encode(process.env.ADMIN_JWT_SECRET ?? "");
 
 export async function middleware(request) {
   const { pathname } = request.nextUrl;
